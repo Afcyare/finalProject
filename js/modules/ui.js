@@ -77,43 +77,28 @@ export function renderNutritionResults(container, data) {
 
 export function renderExerciseResults(container, data) {
   container.innerHTML = "";
+
   if (!data || data.length === 0) {
-    container.innerHTML = "<p class='small'>No exercises found.</p>";
+    container.innerHTML = "<p>No exercises found.</p>";
     return;
   }
 
-  data.forEach(item => {
-    const img = item.gifUrl || item.gifUrl2 || "";
-    const title = item.name || item.exerciseName || "Exercise";
-    const lines = [
-      `<strong>Body Part:</strong> ${item.bodyPart || item.body_part || "N/A"}`,
-      `<strong>Target:</strong> ${item.target || item.target_muscle || "N/A"}`,
-      `<strong>Equipment:</strong> ${item.equipment || item.equip || "N/A"}`
-    ];
+  data.forEach(ex => {
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-    const card = makeCardNode({
-      img,
-      title,
-      lines,
-      actions: [
-        {
-          label: "Add to Favorites",
-          onClick: () => {
-            addFavorite({
-              type: "exercise",
-              id: item.id,
-              name: title,
-              bodyPart: item.bodyPart
-            });
-            alert("Saved to favorites");
-          }
-        }
-      ]
-    });
+    card.innerHTML = `
+      <h3>${ex.name}</h3>
+      <p><strong>Muscle:</strong> ${ex.muscle}</p>
+      <p><strong>Equipment:</strong> ${ex.equipment}</p>
+      <p><strong>Difficulty:</strong> ${ex.difficulty}</p>
+      <p class="small">${ex.instructions}</p>
+    `;
 
     container.appendChild(card);
   });
 }
+
 
 export function renderFavorites() {
   const container = document.querySelector("#favoritesList");
