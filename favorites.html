@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SmartFit - Favorites</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
+  <header>
+    <h1>Favorites</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="meals.html">Meals</a>
+      <a href="workouts.html">Workouts</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Favorites</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="meals.html">Meals</a>
-    <a href="workouts.html">Workouts</a>
-  </nav>
-</header>
+  <main class="container">
+    <section>
+      <h2>Saved Favorites</h2>
+      <div id="favoritesList" class="grid"></div>
+    </section>
+  </main>
 
-<main>
-  <h2>Saved Favorites</h2>
-</main>
-
-<script type="module" src="js/app.js"></script>
-
+  <script type="module">
+    import { renderFavorites } from "./js/modules/ui.js";
+    // renderFavorites will read localStorage and show items
+    renderFavorites();
+  </script>
 </body>
 </html>

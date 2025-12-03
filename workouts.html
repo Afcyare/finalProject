@@ -1,26 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SmartFit - Workouts</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
+  <header>
+    <h1>Workouts</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="meals.html">Meals</a>
+      <a href="favorites.html">Favorites</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Workouts</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="meals.html">Meals</a>
-    <a href="favorites.html">Favorites</a>
-  </nav>
-</header>
+  <main class="container">
+    <section class="search-section">
+      <label for="workQuery">Search exercises (name, body part, or target)</label>
+      <div class="search-row">
+        <input id="workQuery" placeholder="e.g. chest, squat, abs" />
+        <button id="workSearchBtn" class="btn">Search</button>
+      </div>
+      <div id="workStatus" class="status"></div>
+      <div id="workResults" class="grid"></div>
+    </section>
+  </main>
 
-<main>
-  <h2>Workout Search</h2>
-</main>
-
-<script type="module" src="js/api/exreciseAPI.js"></script>
-
+  <script type="module">
+    import { initWorkoutManager } from "./js/modules/workoutManager.js";
+    initWorkoutManager();
+  </script>
 </body>
 </html>

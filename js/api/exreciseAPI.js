@@ -1,13 +1,13 @@
-export async function testExerciseAPI() {
-  const url = "https://exercisedb-api.vercel.app/api/v2";
-
+// Public ExerciseDB mirror (no key required)
+export async function getAllExercises() {
+  const url = "https://exercisedb-api.vercel.app/api/exercises";
   try {
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log("ExerciseDB API Working:", data.slice(0, 5)); // show first 5
-  } catch (error) {
-    console.error("Exercise API Error:", error);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Status ${res.status}`);
+    const data = await res.json(); // big array
+    return data;
+  } catch (err) {
+    console.error("Exercise API error:", err);
+    return [];
   }
 }
-
-console.log("hello");

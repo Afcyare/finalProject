@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SmartFit - Meals</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
+  <header>
+    <h1>Meals</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="workouts.html">Workouts</a>
+      <a href="favorites.html">Favorites</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Meals</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="workouts.html">Workouts</a>
-    <a href="favorites.html">Favorites</a>
-  </nav>
-</header>
+  <main class="container">
+    <section class="search-section">
+      <label for="mealQuery">Search food (e.g. "banana", "rice")</label>
+      <div class="search-row">
+        <input id="mealQuery" placeholder="Type food name and press Search" />
+        <button id="mealSearchBtn" class="btn">Search</button>
+      </div>
+      <div id="mealStatus" class="status"></div>
+      <div id="mealResults" class="grid"></div>
+    </section>
+  </main>
 
-<main>
-  <h2>Meal Search</h2>
-  <p>Testing Nutrition API...</p>
-</main>
-
-<script type="module">
-  import { testNutritionAPI } from "./js/api/nutritionAPI.js";
-  testNutritionAPI();
-</script>
-
+  <script type="module">
+    import { initMealManager } from "./js/modules/mealManager.js";
+    initMealManager();
+  </script>
 </body>
 </html>
