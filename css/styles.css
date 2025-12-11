@@ -49,6 +49,38 @@ nav a{margin-left:0.75rem;text-decoration:none;color:var(--primary);font-weight:
 .card p{margin:0;color:#555;font-size:0.95rem}
 .card .card-actions{margin-top:auto;display:flex;gap:8px}
 .small{font-size:0.85rem;color:#777}
+/* Card hover and entrance */
+.card {
+  transform: translateY(0);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.card:hover { transform: translateY(-8px); box-shadow: 0 16px 30px rgba(13, 30, 60, 0.12); }
+
+/* Button transitions */
+.btn, .btn-ghost { transition: transform .12s ease, background-color .18s ease; }
+.btn:hover, .btn-ghost:hover { transform: translateY(-2px); }
+
+/* Loading spinner */
+.spinner {
+  width: 48px;
+  height: 48px;
+  margin: 16px auto;
+  border-radius: 50%;
+  border: 5px solid rgba(0,0,0,0.08);
+  border-top-color: var(--primary);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* subtle fade-in for results */
+.grid > .card { animation: fadeUp .28s cubic-bezier(.2,.8,.2,1); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px);} to { opacity:1; transform: translateY(0);} }
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; }
+  .card img { height: 200px; }
+}
 
 footer{padding:1rem;text-align:center;color:#777}
 
